@@ -1,0 +1,17 @@
+# Ignorer les fichiers et dossiers spécifiques
+/exercice-php-api-securite/.idea
+/exercice-php-api-securite/.env.local
+/exercice-php-api-securite/.env.local.php
+/exercice-php-api-securite/.env.*.local
+/exercice-php-api-securite/config/secrets/prod/prod.decrypt.private.php
+/exercice-php-api-securite/public/bundles/
+/exercice-php-api-securite/var/
+/exercice-php-api-securite/vendor/
+/exercice-php-api-securite/config/jwt/*.pem
+/exercice-php-api-securite/phpunit.xml
+/exercice-php-api-securite/.phpunit.result.cache
+
+# Autres exclusions
+/.env
+*.log
+*.tmp
