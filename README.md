@@ -37,7 +37,7 @@ docker-compose up -d  # Lancer Docker pour le backend Symfony
 Les migrations de base de données et les fixtures (données d'exemple) sont appliquées automatiquement grâce à Docker. Cependant, cela peut prendre un peu de temps en fonction de votre machine. Soyez patient.
 
 ### 3. Tester l'application
-Accédez à l'application en ouvrant votre navigateur à l'adresse fournie par le serveur frontend (souvent http://localhost:3000).
+Accédez à l'application en ouvrant votre navigateur à l'adresse fournie par le serveur frontend (http://localhost:5173).
 
 Le backend est accessible via les routes configurées par Symfony et exposées par Docker.
 
