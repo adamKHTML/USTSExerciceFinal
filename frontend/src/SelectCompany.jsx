@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const SelectCompanyPage = () => {
   const [companies, setCompanies] = useState([]);
   const [error, setError] = useState('');
-  const [selectedCompany, setSelectedCompany] = useState(null); // State pour la société sélectionnée
+  const [selectedCompany, setSelectedCompany] = useState(null);
   const [role, setRole] = useState('');
   const navigate = useNavigate();
 
@@ -45,7 +45,7 @@ const SelectCompanyPage = () => {
   // Fonction pour gérer la sélection et le stockage de la société
   const handleCompanySelect = (companyId) => {
     setSelectedCompany(companyId);
-    localStorage.setItem('selected_company_id', companyId); // Stocke l'ID de la société dans le localStorage
+    localStorage.setItem('selected_company_id', companyId);
     console.log('Company selected and stored:', companyId);
   };
 
@@ -58,7 +58,7 @@ const SelectCompanyPage = () => {
   // Fonction pour attribuer un rôle à l'utilisateur pour la société sélectionnée
   const handleRoleAssign = async () => {
     const token = localStorage.getItem('jwt_token');
-    const companyId = localStorage.getItem('selected_company_id'); // On récupère la société stockée dans le localStorage
+    const companyId = localStorage.getItem('selected_company_id');
 
     if (token && companyId && role) {
       try {

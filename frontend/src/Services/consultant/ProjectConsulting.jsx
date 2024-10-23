@@ -34,7 +34,7 @@ const ProjectConsulting = () => {
                             Authorization: `Bearer ${token}`,
                         },
                         params: {
-                            company_id: companyId, // Envoie l'ID comme paramètre
+                            company_id: companyId,
                         },
                     });
 

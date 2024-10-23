@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 
 
 const HomePage = () => {
-    return (
-        <Container>
-            <Title>Bienvenue sur notre application!</Title>
-            <Message>
-                Ceci est une page d'accueil où vous pouvez vous connecter pour accéder à vos projets et sociétés.
-            </Message>
-            <Link to="/login">
-                <Button>Se connecter</Button>
-            </Link>
-        </Container>
-    );
+  return (
+    <Container>
+      <Title>Bienvenue sur notre application!</Title>
+      <Message>
+        L'application où vous pouvez vous connecter pour accéder à vos projets et sociétés.
+      </Message>
+      <Link to="/login">
+        <Button>Se connecter</Button>
+      </Link>
+    </Container>
+  );
 };
 
 export default HomePage;

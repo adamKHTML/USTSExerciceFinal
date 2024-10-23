@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Logout = () => {
+
     const navigate = useNavigate();
 
     const handleLogout = async () => {
@@ -13,22 +14,22 @@ const Logout = () => {
                 const response = await axios.post('https://localhost/api/logoff', {}, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
-                console.log('Réponse de déconnexion:', response); // Log de la réponse
+                console.log('Réponse de déconnexion:', response);
                 localStorage.removeItem('jwt_token');
                 alert('Déconnexion réussie');
-                navigate('/'); // Redirection après déconnexion
+                navigate('/');
             } catch (error) {
-                // Gestion des erreurs détaillée
+
                 if (error.response) {
-                    // Le serveur a répondu avec un code d'erreur
+
                     console.error('Erreur de déconnexion:', error.response.data);
                     alert('Erreur de déconnexion: ' + (error.response.data.message || 'Erreur inconnue.'));
                 } else if (error.request) {
-                    // La requête a été faite mais aucune réponse n'a été reçue
+
                     console.error('Aucune réponse reçue:', error.request);
                     alert('Erreur de réseau: Aucune réponse du serveur.');
                 } else {
-                    // Quelque chose a causé une erreur lors de la configuration de la requête
+
                     console.error('Erreur:', error.message);
                     alert('Erreur: ' + error.message);
                 }

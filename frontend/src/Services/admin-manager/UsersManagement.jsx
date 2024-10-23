@@ -81,7 +81,7 @@ const UserManagement = () => {
         }
 
         if (token && userId) {
-            const confirmDelete = window.confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+            const confirmDelete = window.confirm("Êtes-vous sûr de vouloir retiré cet utilisateur ?");
             if (confirmDelete) {
                 try {
                     await axios.delete(`https://localhost/api/users/remove/${userId}`, {
@@ -90,7 +90,7 @@ const UserManagement = () => {
                     });
                     setUsers(users.filter((user) => user.id !== userId));
                     setNonCompanyUsers([...nonCompanyUsers, { id: userId }]);
-                    alert("Utilisateur supprimé avec succès."); // Alerte de succès
+                    alert("Utilisateur retiré avec succès.");
                 } catch {
                     setError("Erreur lors de la suppression de l'utilisateur.");
                 }

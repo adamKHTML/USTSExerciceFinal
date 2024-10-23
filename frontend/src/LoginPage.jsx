@@ -15,7 +15,7 @@ const LoginPage = () => {
     console.log("Données envoyées :", { email, password });
 
     try {
-      // Effectuer la requête de connexion sans CSRF
+
       const response = await axios.post('https://localhost/api/login', { email, password }, {
         headers: {
           'Content-Type': 'application/json',
@@ -25,8 +25,8 @@ const LoginPage = () => {
       console.log("Réponse du serveur :", response);
 
       if (response.data.token) {
-        localStorage.setItem('jwt_token', response.data.token);  // Stocker le JWT
-        navigate('/select');  // Rediriger vers la page des sociétés
+        localStorage.setItem('jwt_token', response.data.token);
+        navigate('/select');
       }
     } catch (error) {
       if (error.response) {
