@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const SelectCompanyPage = () => {
   const [companies, setCompanies] = useState([]);
   const [error, setError] = useState('');
-  const [selectedCompany, setSelectedCompany] = useState(null);
+  const [selectedCompany, setSelectedCompany] = useState(null); // State pour la société sélectionnée
   const [role, setRole] = useState('');
   const navigate = useNavigate();
 
@@ -15,61 +15,55 @@ const SelectCompanyPage = () => {
       const token = localStorage.getItem('jwt_token');
 
       if (token) {
-        console.log('Token found:', token);
         try {
           const response = await axios.get('https://localhost/api/select', {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+            headers: { Authorization: `Bearer ${token}` },
           });
-
-          console.log('API response:', response);
 
           if (response.data.companies) {
             setCompanies(response.data.companies);
-            console.log('Companies fetched:', response.data.companies);
           } else {
             setError('Aucune entreprise trouvée.');
-            console.log('No companies found in the response.');
           }
         } catch (err) {
           if (err.response) {
             setError(err.response.data.message || 'Erreur inconnue lors de la récupération des sociétés.');
-            console.log('API error response:', err.response);
           } else if (err.request) {
             setError('Problème de connexion avec le serveur.');
-            console.log('No response received from API:', err.request);
           } else {
             setError('Une erreur est survenue.');
-            console.log('Error during API call:', err.message);
           }
         }
       } else {
         setError('Vous devez être connecté pour accéder à cette page.');
-        console.log('No token found.');
       }
     };
 
     fetchCompanies();
   }, []);
 
+  // Fonction pour gérer la sélection et le stockage de la société
   const handleCompanySelect = (companyId) => {
     setSelectedCompany(companyId);
-    console.log('Company selected:', companyId);
+    localStorage.setItem('selected_company_id', companyId); // Stocke l'ID de la société dans le localStorage
+    console.log('Company selected and stored:', companyId);
   };
 
+  // Fonction pour gérer le changement de rôle
   const handleRoleChange = (e) => {
     setRole(e.target.value);
     console.log('Role selected:', e.target.value);
   };
 
+  // Fonction pour attribuer un rôle à l'utilisateur pour la société sélectionnée
   const handleRoleAssign = async () => {
     const token = localStorage.getItem('jwt_token');
+    const companyId = localStorage.getItem('selected_company_id'); // On récupère la société stockée dans le localStorage
 
-    if (token && selectedCompany && role) {
+    if (token && companyId && role) {
       try {
         const response = await axios.post('https://localhost/api/assign-role', {
-          company_id: selectedCompany,
+          company_id: companyId,
           role: role,
         }, {
           headers: { Authorization: `Bearer ${token}` },
@@ -95,7 +89,7 @@ const SelectCompanyPage = () => {
 
   return (
     <Container>
-      <Title>Sélectionnez votre entreprise</Title>
+      <Title>Sélectionnez votre entreprise et votre rôle</Title>
       {error && <ErrorMessage>{error}</ErrorMessage>}
       <CompanyList>
         {companies.length > 0 ? (
@@ -108,7 +102,7 @@ const SelectCompanyPage = () => {
             </CompanyItem>
           ))
         ) : (
-          <p>Vous n'avez aucune entreprise à afficher.</p>
+          <p>Vous n'avez aucune entreprise à affichée pour le moment.</p>
         )}
       </CompanyList>
 
@@ -129,6 +123,7 @@ const SelectCompanyPage = () => {
 
 export default SelectCompanyPage;
 
+// Styles
 const Container = styled.div`
   display: flex;
   flex-direction: column;
