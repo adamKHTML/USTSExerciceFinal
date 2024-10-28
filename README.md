@@ -45,3 +45,6 @@ Points à noter
 Temps de réponse : Le temps de réponse du serveur backend peut parfois être lent, surtout lors du premier lancement. Il est recommandé d'attendre un peu et, si nécessaire, de consulter la console pour diagnostiquer les éventuels retards ou erreurs.
 
 Fiabilité : L'application est opérationnelle dans son ensemble, mais en cas de problème, n'hésitez pas à réessayer ou vérifier les logs de la console.
+
+### Vidéo Test
+lien vers la vidéo test du parcours utilisateur: https://www.youtube.com/watch?v=3duBLVJAFSg 
